@@ -1,0 +1,79 @@
+{\rtf1\ansi\ansicpg1252\cocoartf949\cocoasubrtf540
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red191\green0\blue0;\red0\green0\blue0;\red0\green0\blue191;
+\red0\green115\blue0;\red96\green96\blue96;\red0\green0\blue191;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\f0\fs18 \cf2 //Logger test\cf3 \
+\
+\cf4 SynthDef\cf3 (\cf5 \\outToLog\cf3 , \{ \cf4 |out=30, rate=10|\cf3 \
+	\cf4 var\cf3  chain;\
+\
+	chain = [\
+		\cf4 SinOsc\cf3 .kr(0.3),	 \cf2 //signal to record\cf3 \
+		\cf2 //Impulse.kr(rate)		//trigger for each log entry \cf3 \
+		\cf4 LFNoise1\cf3 .kr(3).range(-1, 1)	\
+	];\
+	\
+	\cf4 Out\cf3 .kr(out, chain)\
+\}).store;\
+\
+\cf4 SynthDef\cf3 (\cf5 \\logTrigWithDuration\cf3 , \{ \cf4 |bufnum, bufnum1, bufnum2, in=30, maxSecsBetweenTrigs=1000, durGrain=100|\cf3 \
+	\cf4 var\cf3  duration, trig, delayedTrig, value, ntrigs;\
+	\
+	value = \cf4 In\cf3 .kr(in, 1);\
+	trig = \cf4 In\cf3 .kr(in + 1, 1);\
+	delayedTrig =  \cf4 DelayN\cf3 .kr(trig, \cf4 ControlDur\cf3 .ir, \cf4 ControlDur\cf3 .ir) ;\
+	\
+	\cf4 Logger\cf3 .kr(value, trig, bufnum);\
+	\
+	duration = \cf4 PulseCount\cf3 .kr(\cf4 Impulse\cf3 .kr(durGrain), delayedTrig);\
+	duration = duration.linlin(0, maxSecsBetweenTrigs * durGrain, 0, 1);\
+	\
+	ntrigs = \cf4 PulseCount\cf3 .kr(trig);\
+	\
+	(ntrigs > (\cf4 BufFrames\cf3 .ir(bufnum) - 1)).poll(trig, \cf6 "ntrigs bool"\cf3 );\
+	\
+	\cf4 Logger\cf3 .kr(duration, trig * (ntrigs < \cf4 BufFrames\cf3 .ir(bufnum1) + 1), bufnum1);\
+	\
+\cf2 //	Logger.kr( 1, ntrigs > (BufFrames.ir(bufnum) - 1), bufnum2); //this gives a true/false if the buffer is full or not\cf3 \
+\
+	\cf4 Logger\cf3 .kr( ntrigs.linlin(0, \cf4 BufFrames\cf3 .ir(bufnum), 0, 1), delayedTrig, bufnum2, trig);\
+	\
+\}).store;\
+\
+b = \cf4 Buffer\cf3 .alloc(s, 10, 1);\
+c = \cf4 Buffer\cf3 .alloc(s, 10, 1);\
+d = \cf4 Buffer\cf3 .alloc(s, 1, 1);\
+\
+b.fill(0, b.numFrames, -1);\
+c.fill(0, c.numFrames, -1);\
+\
+u = s.makeBundle(\cf4 false\cf3 , \{\
+	\cf4 Synth\cf3 (\cf5 \\outToLog\cf3 );\
+	\cf4 Synth\cf3 ( \cf5 \\logTrigWithDuration\cf3 , [\cf5 \\in\cf3 , 30, \cf5 \\bufnum\cf3 , b.bufnum, \cf5 \\bufnum1\cf3 , c.bufnum, \cf5 \\bufnum2\cf3 , d.bufnum], 1, \cf5 \\addToTail\cf3  );\
+\});\
+\
+s.sendBundle(1, *u);\
+\
+b.plot\
+c.plot\
+d.plot\
+\
+s.queryAllNodes\
+\
+\
+\
+b.loadToFloatArray(action: \{\cf4 |ar|\cf3  g = ar\});\
+c.loadToFloatArray(action: \{ \cf4 |ar|\cf3  h = ar \});\
+\cf0 d.loadToFloatArray(action: \{ \cf7 |ar|\cf0  i = ar \});\
+\cf3 \
+\
+h = h.linlin(0, 1, 0, 1000)\
+e = \cf4 Env\cf3 (g, h[1..] );\
+\
+e.plot\
+\
+\
+\
+}

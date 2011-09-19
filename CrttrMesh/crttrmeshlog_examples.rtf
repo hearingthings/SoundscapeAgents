@@ -1,0 +1,107 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red191\green0\blue0;\red0\green0\blue0;\red0\green0\blue191;
+\red96\green96\blue96;\red0\green115\blue0;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\fs18 \cf2 ///CrttrMeshLog examples\cf3 \
+\
+v = \cf4 Server\cf3 .new(\cf5 "nrt"\cf3 , s.addr, options: \cf4 CrttrMeshLog\cf3 .options);\
+c = \cf4 CrttrMeshLog\cf3 .new(20@20, v, \cf5 "test"\cf3 , 5, 5, 5);\
+\
+\
+m = \cf4 CNAmbiSynth\cf3 (c, [10,20,0], \cf5 "sin"\cf3 );\
+\
+f = c.doRender;\
+\
+\
+\
+g = \cf4 CrttrMeshGui\cf3 (c);\
+g.draw;\
+\
+g.setCurrentFrame(44100);\
+g.refresh\
+\
+g.currentFrame = c.listenerArrayForFrame(80000);\
+\
+\
+c.listenerSynths.collect\{ \cf4 |f|\cf3  f.pos \}\
+\
+\cf4 SynthDef\cf3 (\cf5 "sin"\cf3 , \{ \cf4 |test=1, ta=200, out|\cf3  \cf4 Out\cf3 .ar(out, \cf4 SinOsc\cf3 .ar(\cf4 SinOsc\cf3 .ar(test, 0, ta), 0, 30)) \}).store \
+\
+\
+f.score.size\
+f.score[1]\
+f.score[1].postcs\
+f.score[2].bundleSize\
+\
+f.clumpBundles\
+f.score[4]\
+\
+\cf4 Task\cf3 \{\
+f.score.do\{ \cf4 |d, i|\cf3 \
+	i.postln; \
+	s.listSendBundle(0, d[1..]) ;\
+	0.1.wait;\
+\}\
+\}.play\
+\
+s.queryAllNodes\
+\
+c.partitionListeners\
+\
+c.makeListenerSynths;\
+\
+c.listenerSynths.size\
+\
+b = c.makeListenersBundle\
+\
+c.recordBuffers\
+s.freeAll\
+\
+c.writeBuffersBundle\
+\
+b.size\
+\
+\
+\cf4 Bus\cf3 .audio(v, 3)\
+\
+c.server\
+\
+\
+\
+\
+\cf2 ///where to start tomorrow:\cf3 \
+\
+brainstorm how to handle any pending bundles that messages might generate. think of rules if they come to you.\
+\
+try to read \cf4 this\cf3  information in to a very simple gui for playback.\
+\
+think of visualizing irm states\
+\
+\
+do some sound work granulating the car sound and playing with that\
+\
+\
+\
+TODO:\
+\cf2 //verify that the way you're sending messages to recordbuf in is correct\cf3 \
+\
+\cf4 SynthDef\cf3 (\cf5 "testma"\cf3 , \{\
+	\cf4 var\cf3  a;\
+	a = \cf4 Control\cf3 .names([\cf6 \\a\cf3 ]).kr([1,2,3,4]);\
+	a.poll(\cf4 Impulse\cf3 .kr(1));\
+\}).store;\
+\
+f = \cf4 Synth\cf3 .basicNew(\cf5 "testma"\cf3 , s);\
+m = f.newMsg(0, [\cf6 \\a\cf3 , [4,5,6,7]])\
+\
+n = f.setnMsg(\cf6 \\a\cf3 , [3, 4, 5, 6])\
+\
+s.sendMsg(*m)\
+\
+s.sendMsg(*n)\
+\
+f.setn(\cf6 \\a\cf3 , [3,4,5,6])\
+\
+s.queryAllNodes}

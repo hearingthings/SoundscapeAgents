@@ -1,0 +1,104 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue191;\red0\green115\blue0;\red191\green0\blue0;
+\red96\green96\blue96;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\fs20 \cf0 a = \cf2 AnalysisRenderController.\cf0 newWithFileAndChains(\
+	"sounds/a11wlk01-44_1.aiff",\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\fs18 \cf0 		[\
+			[ \
+				[
+\fs20 \cf2 AFilter\cf0 , \cf3 \\afilterLPF_1\cf0 , \cf3 \\lowpassFreq\cf0 , 20000],\
+				[\cf2 AFFTAnalysis\cf0 , \cf3 \\
+\fs18 \cf3 afftSpecCrestToBus, \\hop, 0.5\cf0 ]\
+			],\
+			[\
+				[
+\fs20 \cf2 AFilter\cf0 , \cf3 \\afilterLPF_1\cf0 , \cf3 \\lowpassFreq\cf0 , 20],\
+				[\cf2 AFFTAnalysis\cf0 , \cf3 \\
+\fs18 \cf3 afftSpecCrestToBus\cf0 ]\
+			],\
+			\
+			\
+		]\
+	);\
+	\
+\
+v = a.makeScore;\
+a.render;\
+a.chains[0].chainArray.last.loadData\
+\
+a.chains[0].chainArray.last.data\
+\
+\
+	o = \cf2 ServerOptions\cf0 .new.numOutputBusChannels = 2; \cf4 // stereo output\cf0 \
+	f = \cf2 Score\cf0 .recordNRTBlock(v, \cf5 "scoreTests/help-oscFile.osc"\cf0 , \cf5 "scoreTests/helpNRT.aiff"\cf0 , options: o); \cf4 // synthesize\cf0 \
+\
+v.do\{ |msg| msg.postcs; "\\n".postcs;\}\
+\
+a.readFileWithPath("sounds/
+\fs20 a11wlk01-44_1.aiff
+\fs18 ");\
+a.enumerateResources;\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\fs20 \cf0 b = a.synthsBundleAtTime(0);
+\fs18 \
+c = a.allocBuffersMsgBundle(0);\
+l = a.logMsgBundleAtTime(a.sourceDuration);\
+f = a.freeMsgBundleAtTime(20);\
+\
+a.inBlock.nChansOut\
+a.inBlock.outRate\
+a.inBlock.nChansIn\
+\
+a.inBlock.dump\
+\
+a.chains[0].chainArray[0].outRate\
+a.chains[0].chainArray[0].inBus\
+a.chains[0].chainArray[0].outBus\
+a.chains[0].chainArray[0].inRate\
+a.chains[0].chainArray[0].nodeID\
+\
+a.chains[0].writeLogDataMsgBundle(50, "tmp/dude");\
+\
+\
+a.chains[1].chainArray[1].nChansIn\
+\
+\
+a.chains[0].chainArray[0].dump\
+\
+a.chains[0].chainArray[0].
+\fs20 newSynthMsgListForServer(s)
+\fs18 \
+\
+a.chains[0].chainArray.do\{ |block, bi| block.outBus.postln \}\
+\
+a.chains[0].chainArray[1].
+\fs20 buffers\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\fs18 \cf0 a.chains[0].enumerateNodeIDs(s)\
+\
+a.duration\
+	\
+a.chains[0].
+\fs20 enumerateBusses(s)
+\fs18 \
+a.chains[0].
+\fs20 enumerateBuffers(s)
+\fs18 	\
+	\
+	\
+	\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\fs20 \cf0 \
+d = \cf2 SynthDescLib\cf0 .global.at(\\
+\fs18 \cf3 afftSpecCrestToBus
+\fs20 \cf0 );\
+d.outputData[0][\\numChannels]\
+}

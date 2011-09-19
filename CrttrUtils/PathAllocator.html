@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title></title>
+<meta name="Generator" content="Cocoa HTML Writer">
+<meta name="CocoaVersion" content="1138">
+<style type="text/css">
+p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #737373}
+p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #000000; min-height: 12.0px}
+p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #df0000}
+p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #000000}
+span.s1 {color: #000000}
+span.s2 {color: #2600d2}
+span.s3 {color: #737373}
+</style>
+</head>
+<body>
+<p class="p1"><span class="s1">p = </span><span class="s2">PathAllocator</span><span class="s1">(</span>"tmp"<span class="s1">, </span>"test"<span class="s1">, </span>"txt"<span class="s1">);</span></p>
+<p class="p2"><br></p>
+<p class="p3">//allocate a single file name</p>
+<p class="p4">f = p.alloc;</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s1">g = 10.collect{ p.alloc }; </span>//allocate 10 consecutive filenames</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p3">//TODO: help</p>
+<p class="p3">//write some files</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p3">//create a new path allocator that starts with existing files</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p3">//create a new path allocator that wipes out the directory</p>
+<p class="p4">p = <span class="s2">PathAllocator</span>.newClearDir(<span class="s3">"tmp"</span>, <span class="s3">"test"</span>, <span class="s3">"txt"</span>);</p>
+</body>
+</html>

@@ -1,0 +1,5 @@
+Crttr: Soundscape Agents
+SC libraries for:
+	Synthesizing sound environments
+	Analyzing environmental recordings
+	Creating sonic behaviors and soundscape agents

@@ -39,10 +39,10 @@ RM = "/Applications/CMake 2.8-5.app/Contents/bin/cmake" -E remove -f
 CMAKE_EDIT_COMMAND = "/Applications/CMake 2.8-5.app/Contents/bin/ccmake"
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/blank/lib/Phasein
+CMAKE_SOURCE_DIR = /Users/blank/lib/SoundscapeAgents/CrttrUgens/Phasein
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/blank/lib/Phasein
+CMAKE_BINARY_DIR = /Users/blank/lib/SoundscapeAgents/CrttrUgens/Phasein
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,9 +69,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blank/lib/Phasein/CMakeFiles /Users/blank/lib/Phasein/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blank/lib/SoundscapeAgents/CrttrUgens/Phasein/CMakeFiles /Users/blank/lib/SoundscapeAgents/CrttrUgens/Phasein/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blank/lib/Phasein/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/blank/lib/SoundscapeAgents/CrttrUgens/Phasein/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,6 +111,19 @@ PhaseIn1/fast:
 	$(MAKE) -f CMakeFiles/PhaseIn1.dir/build.make CMakeFiles/PhaseIn1.dir/build
 .PHONY : PhaseIn1/fast
 
+#=============================================================================
+# Target rules for targets named PhaseInIrm
+
+# Build rule for target.
+PhaseInIrm: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 PhaseInIrm
+.PHONY : PhaseInIrm
+
+# fast build rule for target.
+PhaseInIrm/fast:
+	$(MAKE) -f CMakeFiles/PhaseInIrm.dir/build.make CMakeFiles/PhaseInIrm.dir/build
+.PHONY : PhaseInIrm/fast
+
 PhaseIn1.o: PhaseIn1.cpp.o
 .PHONY : PhaseIn1.o
 
@@ -135,6 +148,30 @@ PhaseIn1.cpp.s:
 	$(MAKE) -f CMakeFiles/PhaseIn1.dir/build.make CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.s
 .PHONY : PhaseIn1.cpp.s
 
+PhaseInIrm.o: PhaseInIrm.cpp.o
+.PHONY : PhaseInIrm.o
+
+# target to build an object file
+PhaseInIrm.cpp.o:
+	$(MAKE) -f CMakeFiles/PhaseInIrm.dir/build.make CMakeFiles/PhaseInIrm.dir/PhaseInIrm.cpp.o
+.PHONY : PhaseInIrm.cpp.o
+
+PhaseInIrm.i: PhaseInIrm.cpp.i
+.PHONY : PhaseInIrm.i
+
+# target to preprocess a source file
+PhaseInIrm.cpp.i:
+	$(MAKE) -f CMakeFiles/PhaseInIrm.dir/build.make CMakeFiles/PhaseInIrm.dir/PhaseInIrm.cpp.i
+.PHONY : PhaseInIrm.cpp.i
+
+PhaseInIrm.s: PhaseInIrm.cpp.s
+.PHONY : PhaseInIrm.s
+
+# target to generate assembly for a file
+PhaseInIrm.cpp.s:
+	$(MAKE) -f CMakeFiles/PhaseInIrm.dir/build.make CMakeFiles/PhaseInIrm.dir/PhaseInIrm.cpp.s
+.PHONY : PhaseInIrm.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -142,11 +179,15 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... PhaseIn1"
+	@echo "... PhaseInIrm"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... PhaseIn1.o"
 	@echo "... PhaseIn1.i"
 	@echo "... PhaseIn1.s"
+	@echo "... PhaseInIrm.o"
+	@echo "... PhaseInIrm.i"
+	@echo "... PhaseInIrm.s"
 .PHONY : help
 
 

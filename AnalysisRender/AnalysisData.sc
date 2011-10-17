@@ -57,6 +57,7 @@ AnalysisData {
 	var <nStreams;
 	
 	var <>timeIn, <>timeOut, <>timeGrain;
+	var <file;
 	
 	*initClass { 
 		subclassTypes = IdentityDictionary.new;
@@ -107,7 +108,7 @@ ADataCont : AnalysisData { //continuously triggered analysis data
 	}
 	
 	returnFloatArrayData {
-			var file, data, nf, nc;
+			var data, nf, nc;
 			var env, times;
 			file = SoundFile.new;
 			file.openRead(path);
@@ -124,6 +125,31 @@ ADataCont : AnalysisData { //continuously triggered analysis data
 	at { |time|
 		if (env.isNil) {this.makeEnv};
 		^env.at(time);
+	}
+	
+	
+	atTimeNoEnv { |time|
+		//this seeks in the file, reads adjacent samples and interpolates		
+		var frame1, frames, pct, val;
+		
+		frame1 = (time * sampleRate);
+		pct = frame1 - frame1.floor;
+		frame1 = frame1.floor;
+		
+		if (file.isNil) {
+			file = SoundFile.new;
+			file.openRead(path); 	
+		};
+		
+		if (file.isOpen.not) { file.openRead(path) };
+		
+		frames = FloatArray.newClear(2);
+		file.seek(frame1, 0);
+		file.readData(frames);
+		
+		val = pct.linlin(0, 1, frames[0], frames[1]);
+
+		^val
 	}
 	
 	dataForView {

@@ -29,7 +29,6 @@ CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.o: /Users/blank/src/supercollider/include/p
 CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.o: /Users/blank/src/supercollider/include/plugin_interface/SC_Unit.h
 CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.o: /Users/blank/src/supercollider/include/plugin_interface/SC_Wire.h
 CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.o: /Users/blank/src/supercollider/include/plugin_interface/SC_World.h
-CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.o: /Users/blank/src/supercollider/include/plugin_interface/SC_sndfile_stub.h
 CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.o: /Users/blank/src/supercollider/include/plugin_interface/Unroll.h
 CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.o: /Users/blank/src/supercollider/include/plugin_interface/sc_msg_iter.h
 

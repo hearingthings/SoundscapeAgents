@@ -9,3 +9,9 @@ set(CMAKE_SHARED_MODULE_PREFIX "")
 set(CMAKE_SHARED_MODULE_SUFFIX ".scx")
 
 add_library(PhaseIn1 MODULE PhaseIn1.cpp)
+add_library(PhaseInIrm MODULE PhaseInIrm.cpp)
+
+
+#cmake -DSC_PATH=~/src/supercollider
+#make
+#mv PhaseIn1.scx PhaseIn1_sclib/

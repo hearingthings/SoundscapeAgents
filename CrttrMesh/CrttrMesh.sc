@@ -14,6 +14,7 @@ CrttrMesh {
 	var <speedOfSound;
 //	var pendingBundles;
 	var <outputs; //[[node, hardwareChan, numChans, repatchSynth]]  
+	var <others;
 
 	*new { |bounds, server|
 		^super.newCopyArgs(bounds, server).init
@@ -139,6 +140,10 @@ CrttrMesh {
 		nodes.remove(node); //TODO: removeNode needs to do more?
 	}
 
+	addOther { |other|
+		others = others.add(other); //others are things that respond to makebundle, runbundle, etc
+		others.debug("others");
+	}
 
 	//realtime?
 	play { 
@@ -164,7 +169,12 @@ CrttrMesh {
 	makeAllBundle {
 		var b = [];
 		b = b ++ this.makeBundle;
-		nodes.do{ |node| b = b ++ node.makeBundle }
+		nodes.do{ |node| b = b ++ node.makeBundle };
+
+			//TODO: the two lines below are a hack - need unified interface for soundscapeAgents
+		others.do{ |other| b = b ++ other.allocBundle }; 
+		others.do{ |other| b = b ++ other.runBundle };
+
 		^b
 	}
 
@@ -237,6 +247,7 @@ CrttrMesh {
 		nodes.do{ |node| 
 			n = n ++ node.finishBundle;
 		};
+		others.do{ |other| n = n ++ other.finishBundle };
 		
 		^n		
 		

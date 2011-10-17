@@ -494,5 +494,114 @@ SippingTester {
 
 		
 	}	
+
+
+
+	runRMSTest {
+		var triggerLatency = 0.021;
+		var serialWait = 0.01;
+		var measurePeriod = (triggerLatency max: serialWait) * nMeasures;
+		var mpPlus = measurePeriod + 0.001;		
+		var bpfQueue, whiteQueue, dbQueue;	
+		var bpfInSynth;
+		
+		var getSerialInt, getSerialMean;
+		var gbpfInAmp, gbpfOutAmp;
+		var o, r;
+
+		path.debug("path");
+		
+		SynthDef("bpfInAmp", { |freq, rq, inCh=0, ampTime=0.01, t_trig, id=0|
+			var chain;
+			chain = SoundIn.ar(0);
+			chain = BPF.ar(chain, freq, rq);
+			chain = Amplitude.kr(chain, ampTime, ampTime);
+			SendReply.kr(t_trig, 'bpfInAmp', chain, id);
+			
+		}).store;
+		
+		SynthDef("whiteNoiseBPF", { |freq, rq, amp, ampTime, t_trig, id=0|
+			var chain;
+			chain = WhiteNoise.ar(amp);
+			chain = BPF.ar(chain, freq, rq);
+			Out.ar(0, chain);
+			chain = Amplitude.kr(chain, ampTime, ampTime);
+			SendReply.kr(t_trig, 'whiteNoiseBPF', chain, id);
+		}).store;
+		
+		
+		
+		^{
+			data = Array.newClear(nTests);
+			
+//			(amps.size * (measurePeriod * (onTestPeriods +ambiTestPeriods))).debug("estimatedTime");
+		
+			o.remove; o = OSCresponder(nil, 'bpfInAmp', { 
+				|t, r, msg| 
+				var id = msg[2];
+				var val = msg[3];
+				bpfQueue = bpfQueue.add(val);
+			}).add;
+			r.remove; r = OSCresponder(nil, 'whiteNoiseBPF', { 
+				|t, r, msg| 
+				var id = msg[2];
+				var val = msg[3];
+				
+				whiteQueue = whiteQueue.add(val);
+			}).add;
+			
+			
+			s.latency = 0;
+			//set up initial synths
+			bpfInSynth = Synth(\bpfInAmp, [\freq, freq, \rq, rq, \ampTime, ampTime]);
+			
+			1.wait;
+			"no error".postln;
+			//trigger routine
+			nTests.do{ |testNum|
+				var result, synth;
+				var mic = [], db = [];
+				
+			//do a test:
+				//ambiPre
+					//get mic and db levels for the various periods
+				ambiTestPeriods.do{ |tp|
+					var dbMean, micMean;
+					{dbMean = getSerialMean.value(nMeasures, serialWait);}.fork;
+					{	bpfQueue = [];
+						nMeasures.do{ |n|
+							bpfInSynth.set(\t_trig, 1);
+							triggerLatency.wait;
+
+						};
+						micMean = bpfQueue.mean.ampdb;
+
+					}.fork;
+					mpPlus.wait;
+					db = db.add( dbMean );
+					mic = mic.add( micMean );						};
+				mic = mic.mean;
+				db = db.mean;
+	
+					"finished ambitest".postln;
+				result = (
+					mic: mic,
+					db: db
+				);
+				data.put(testNum, result);
+				postDelay.wait
+
+			};	
+			"* * * * DONE * * * *".postln;
+			//finally, write an archive
+			this.writeArchive(path);		
+
+		}.fork;
+		
+
+
+		
+	}	
+
 	
 }

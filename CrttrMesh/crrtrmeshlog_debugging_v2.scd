@@ -7,7 +7,7 @@ SynthDef("sin", { |test=1, ta=200, out| Out.ar(out, SinOsc.ar(1000, IRand(0, 2pi
 (	
 	v = Server.new("nrt", s.addr, options: CrttrMeshLog.options);
 	c = CrttrMesh(20@20, v);
-	l = CrttrMeshLog(c, 100, "tmpp"); //mesh, time, directory
+	l = CrttrMeshLog(c, 10, "tmpp"); //mesh, time, directory
 	
 	2.do{ CNAmbiSynth(c, [10.rand,10.rand,0], "sin"); };
 	
@@ -21,7 +21,7 @@ l.renderComplete; //should be true
 
 //HOW TO LISTEN TO THE ARCHIVE
 f = l.archive.meshFromArchive(s) //creates a mesh with CMReadParamFiles - sound output and position
-f.nodes;
+f.nodes[0].busses;
 
 n = CNStereoDecoder(f, [10, 10, 0]); //make a decoder to listen
 
@@ -34,9 +34,32 @@ f.setNodeAsOutput(n, 0); //YOU SHOULD HEAR SOMETHING!!!
 	//make an analysis chain for a particular node (class - CMAnalysisChain - takes a node as input)
 	//run the analysis 
 
+//
+s.options.sampleRate = 44100;
+s.options.blockSize = 64;
 
 
+a = ALevelsAnalysis(\rmsDB, [], s);
+f = l.archive.meshFromArchive(s);
+c = CrttrMeshMapParam.newGrid(10, 10, f, "tmpMaps", \rmsDB, a, l.time);
+c.makeListenerAndChain(2, 2, c.analysisSynth);
 
+c.render
+
+h = 	c.pointsToDataIndex[0][1];
+h.duration
+h.atTimeNoEnv(1)
+g = 100.collect{ |i| var e = (i/100); h.atTimeNoEnv(e); }
+h
+h.at(14)
+
+g = c.mesh.makeAllBundle
+
+//add a logging node at a particular point
+//run
+//make sure the mesh map knows about that file
+
+c.mesh.others[0].allocBundle
 
 
 

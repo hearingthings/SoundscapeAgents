@@ -281,7 +281,6 @@ AnalysisBlock { //abstract class, wraps a synthdef with rate and bus information
 }
 
 //INPUT SOURCE
-
 AInputPlayBuf : AnalysisBlock {
 	classvar synthDefNameBase;
 
@@ -361,6 +360,40 @@ AInputPlayBuf : AnalysisBlock {
 		
 		//should add diskin for super long files	
 	}
+	
+}
+
+AInputBusMono : AnalysisBlock {
+	
+	var <>inputBus;
+
+	*initClass { this.initSynths }
+	
+	*new { |server, inputBus|
+		^super.newClear.initWithArgs(server, inputBus);
+	}
+	
+	initWithArgs { |sA, iA|
+		server = sA; inputBus = iA;
+		
+		synthDefName = \inOutMono;
+
+		super.init;
+		
+		params.put(this.inName, inputBus);
+	}
+	
+	*initSynths {
+		SynthDef(\inOutMono, { |inar0=0, outar0=0|
+			var chain;
+			chain = In.ar(inar0, 1);
+			Out.ar(outar0, chain);
+		}, metadata: (
+			inputName: \inar0, inputRate: \audio, inputChannels: 1,
+			outputName: \outar0, outputRate: \audio, outputChannels: 1
+		) ).store;	
+		
+	}	
 	
 }
 
@@ -545,6 +578,7 @@ ALevelsAnalysis : AAnalysis {
 			chain = In.ar(inar0, 1);
 			chain = RunningSum.rms(chain, windowSize);
 			chain = A2K.kr(chain);
+			chain.poll(Impulse.kr(10), "rms");
 			chain = chain.ampdb;
 			Out.kr(outkr0, chain);
 		}, metadata: (

@@ -1,0 +1,46 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue191;\red191\green0\blue0;
+\red96\green96\blue96;\red0\green115\blue0;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\fs18 \cf2 \
+\
+\
+a = \{ \cf3 |t_trig, time=1, center=1|\cf2 \
+	\cf3 var\cf2  test, trig, timeTrig, endTrig;\
+	\cf3 var\cf2  inL, int;\
+	\cf3 var\cf2  e;\
+	\
+	t_trig = \cf3 T2A\cf2 .ar(t_trig);\
+	\
+	endTrig = \cf3 TDelay\cf2 .ar(t_trig, time);\
+	\
+	e = \cf3 Env\cf2 ([0, center * 0.5, center * 1.5], [0, time]);\
+	e = \cf3 EnvGen\cf2 .kr(e, gate: t_trig);\
+	center = 	e;\
+	test = \cf3 LFNoise1\cf2 .ar(10).range(center-0.01, center+0.01);\
+\cf4 //	test = SinOsc.ar(0, 0, 1, center);\cf2 \
+	\
+	timeTrig = \cf3 Trig1\cf2 .ar(t_trig, time + \cf3 ControlDur\cf2 .ir);\
+\
+	inL = \cf3 LocalIn\cf2 .ar(1);\
+	inL = inL * timeTrig;\
+	inL = test + inL;\
+	inL.poll;\
+	\cf3 LocalOut\cf2 .ar(inL);\
+		\
+	test = inL / \cf3 ControlRate\cf2 .ir;\
+	test = test / time;\
+\
+	test.poll(endTrig, \cf5 "done"\cf2 );\
+\cf4 //	test.poll(T2A.ar(endTrig), "done");\cf2 \
+\}.play;\
+\
+\
+a.set(\cf6 \\t_trig\cf2 , 1, \cf6 \\time\cf2 , 0.9, \cf6 \\center\cf2 , 1);\
+a.set(\cf6 \\t_trig\cf2 , 1, \cf6 \\time\cf2 , 10, \cf6 \\center\cf2 , 5000.1);\
+\
+ \
+s.options.blockSize = 64\
+s.reboot}

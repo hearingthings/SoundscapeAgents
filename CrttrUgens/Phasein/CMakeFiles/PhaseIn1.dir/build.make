@@ -35,10 +35,10 @@ RM = "/Applications/CMake 2.8-5.app/Contents/bin/cmake" -E remove -f
 CMAKE_EDIT_COMMAND = "/Applications/CMake 2.8-5.app/Contents/bin/ccmake"
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/blank/lib/Phasein
+CMAKE_SOURCE_DIR = /Users/blank/lib/SoundscapeAgents/CrttrUgens/Phasein
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/blank/lib/Phasein
+CMAKE_BINARY_DIR = /Users/blank/lib/SoundscapeAgents/CrttrUgens/Phasein
 
 # Include any dependencies generated for this target.
 include CMakeFiles/PhaseIn1.dir/depend.make
@@ -51,17 +51,17 @@ include CMakeFiles/PhaseIn1.dir/flags.make
 
 CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.o: CMakeFiles/PhaseIn1.dir/flags.make
 CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.o: PhaseIn1.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/blank/lib/Phasein/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/blank/lib/SoundscapeAgents/CrttrUgens/Phasein/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.o -c /Users/blank/lib/Phasein/PhaseIn1.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.o -c /Users/blank/lib/SoundscapeAgents/CrttrUgens/Phasein/PhaseIn1.cpp
 
 CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/blank/lib/Phasein/PhaseIn1.cpp > CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/blank/lib/SoundscapeAgents/CrttrUgens/Phasein/PhaseIn1.cpp > CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.i
 
 CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/blank/lib/Phasein/PhaseIn1.cpp -o CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/blank/lib/SoundscapeAgents/CrttrUgens/Phasein/PhaseIn1.cpp -o CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.s
 
 CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.o.requires:
 .PHONY : CMakeFiles/PhaseIn1.dir/PhaseIn1.cpp.o.requires
@@ -97,6 +97,6 @@ CMakeFiles/PhaseIn1.dir/clean:
 .PHONY : CMakeFiles/PhaseIn1.dir/clean
 
 CMakeFiles/PhaseIn1.dir/depend:
-	cd /Users/blank/lib/Phasein && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/blank/lib/Phasein /Users/blank/lib/Phasein /Users/blank/lib/Phasein /Users/blank/lib/Phasein /Users/blank/lib/Phasein/CMakeFiles/PhaseIn1.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/blank/lib/SoundscapeAgents/CrttrUgens/Phasein && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/blank/lib/SoundscapeAgents/CrttrUgens/Phasein /Users/blank/lib/SoundscapeAgents/CrttrUgens/Phasein /Users/blank/lib/SoundscapeAgents/CrttrUgens/Phasein /Users/blank/lib/SoundscapeAgents/CrttrUgens/Phasein /Users/blank/lib/SoundscapeAgents/CrttrUgens/Phasein/CMakeFiles/PhaseIn1.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/PhaseIn1.dir/depend
 

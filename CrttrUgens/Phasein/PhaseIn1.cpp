@@ -10,6 +10,10 @@
 #include "SC_PlugIn.h"
 #include "SC_World.h"
 
+#define NUMSTATES 2
+#define NUMSCORES 10
+
+
 static InterfaceTable *ft;
 
 //PhaseIn1.kr(bool, callRestPeriod, maxTimeInhibited)
@@ -19,7 +23,12 @@ struct PhaseIn1 : public Unit
     bool changeState;
 	float timeCallRest;
     float timeInhibited;
+    float thisListeningMaxTime;
     float callTrig;
+    
+    float scores[NUMSCORES];
+    int scoreIndex;
+    float score;
 };
 
 
@@ -28,8 +37,6 @@ enum {
     callRest
 };
 
-#define NUMSTATES 2
-#define RGENVECSIZE 10
 
 
 // declare unit generator functions 
@@ -59,7 +66,52 @@ void PhaseIn1_Ctor(PhaseIn1* unit)
     unit->callTrig = 0;
     unit->changeState = true;
     
+    for (int i = 0; i < NUMSCORES; i++) {
+        unit->scores[i] = 1;
+    };
+    unit->scoreIndex = 0;
+    
+    unit->score = 1;
+    
 	PhaseIn1_next_k(unit, 1);
+}
+
+float PlayProbRand( PhaseIn1 *unit, float scale ) {
+    float newtime;
+	RGen& rgen = *unit->mParent->mRGen;
+    
+    newtime = rgen.frand();
+    newtime = 1 - (newtime * newtime * newtime); //cubed
+    newtime = newtime * scale;
+    return newtime;
+}
+
+void updateScore ( PhaseIn1 *unit) {
+    float thisScore;
+    float avgScore;
+    //calculate thisScore (score for current period)
+    if (unit->timeInhibited >= unit->thisListeningMaxTime){
+        thisScore = 1;
+    } else {
+        thisScore = unit->timeInhibited / unit->thisListeningMaxTime;
+    };
+    thisScore = 1 - thisScore;
+
+    unit->score = (unit->score + thisScore) / 2;
+
+//    //put current score in array
+//    unit->scores[unit->scoreIndex] = thisScore;
+//
+//    //calculate average score
+//    for (int i=0; i < NUMSCORES; i++) {
+//        avgScore = avgScore + unit->scores[i];
+//    };
+//    avgScore = avgScore / NUMSCORES;
+//    unit->score = avgScore;
+//
+//    //increment and mod score index
+//    unit->scoreIndex++;
+//    unit->scoreIndex = unit->scoreIndex % NUMSCORES;
 }
 
 
@@ -81,36 +133,38 @@ void PhaseIn1_next_k(PhaseIn1 *unit, int inNumSamples)
 	
 //	float sr = unit->mRate->mSampleRate;
     
-	RGen& rgen = *unit->mParent->mRGen;
+
 
  //   printf("exprand %f\n", rgen.exprandrng(0.01, 1.01));	
 	switch (unit->curstate) {
 		case listening:	//listening
             //entry
             if (unit->changeState) {
+                //reset timeInhibited
                 unit->timeInhibited = 0;
+                
+                //get a new random value
+                unit->thisListeningMaxTime = PlayProbRand(unit, maxTimeInhibited);
             };
 
-            //during
-			if(threshBool > 0) { 
-				unit->curstate = callRest;
+            //during..
+            
+			if(threshBool > 0) {
+                //update score
+                updateScore(unit);
+				unit->curstate = callRest; //exit
                 break; //environment is clear - we're ready to go
 			};
             
             unit->timeInhibited = unit->timeInhibited + SAMPLEDUR;
             
-            playProb = unit->timeInhibited / maxTimeInhibited;
-            
-            for (int i = 0; i < 10; i++) {
-                meanRand = meanRand + rgen.frand();
-            };
-            meanRand = meanRand / 10;
-            
-            if (meanRand < playProb) {
+            if (unit->timeInhibited >= unit->thisListeningMaxTime) {
+                updateScore(unit);
                 unit->curstate = callRest; //exit
                 break;
             }
 			break;
+            
 		case callRest:
 
 			//entry into the state
@@ -148,10 +202,11 @@ void PhaseIn1_next_k(PhaseIn1 *unit, int inNumSamples)
     
     
 	ZOUT0(0) = unit->callTrig;
-    ZOUT0(1) = unit->curstate;
+    ZOUT0(1) = unit->score;
+    ZOUT0(2) = unit->curstate;
 }
 
-PluginLoad(Irm) {
+PluginLoad(PhaseIn1) {
 	ft = inTable;
 	DefineSimpleUnit(PhaseIn1);
 }	

@@ -16,7 +16,7 @@ CrttrMeshNode {
 
 	//CREATION	
 	*new{ |mesh, pos, sourceDef, sourceArgs|
-		^super.newCopyArgs(mesh, pos, sourceDef, sourceArgs).init	
+		^super.newCopyArgs(mesh, pos, sourceDef, sourceArgs).init		
 	}
 	
 	*basicNew {
@@ -35,8 +35,6 @@ CrttrMeshNode {
 		copy.mesh = newMesh;
 		^copy.init;	
 	}
-
-	
 	
 	//initialize resources
 	init {
@@ -470,8 +468,9 @@ CNAmbiListenMono : CNAmbiSynth { //mostly used for mapping
 	}
 	
 	sourceBundle { ^nil }
+	spatialBundle { ^nil }
 	
-	outputs { ^nil }
+	outputs { ^[ [\out, \audio, 1] ] }
 	
 	*storeSynthDefs {
 		SynthDef("monoDecoder", { |ambiIn, decAudioOut=0|

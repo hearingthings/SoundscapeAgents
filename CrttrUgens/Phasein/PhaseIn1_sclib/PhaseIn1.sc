@@ -23,3 +23,18 @@ PhaseInIrm : PhaseInUgen {
 		)
 	}
 }
+
+PhaseInIrm2 : PhaseInUgen { 
+	*kr { |threshBool=1, callThreshBool=1, callPeriod = 1, restPeriod = 1, inhibitCallMax = 1, inhibitRestMax=1, inhibitDist = 1, playProb=1, restMode=0, callInhibitMode=0, callInhibitWeight=1|
+		
+		^this.multiNew('control', 
+			threshBool, callThreshBool, callPeriod, restPeriod, 
+			inhibitCallMax, inhibitRestMax, inhibitDist, playProb, restMode, callInhibitMode, callInhibitWeight 
+		)
+	}
+	
+	init { arg ... theInputs;
+		inputs = theInputs
+		^this.initOutputs(4, rate)
+	}
+}

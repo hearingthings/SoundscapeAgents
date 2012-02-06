@@ -124,6 +124,19 @@ PhaseInIrm/fast:
 	$(MAKE) -f CMakeFiles/PhaseInIrm.dir/build.make CMakeFiles/PhaseInIrm.dir/build
 .PHONY : PhaseInIrm/fast
 
+#=============================================================================
+# Target rules for targets named PhaseInIrm2
+
+# Build rule for target.
+PhaseInIrm2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 PhaseInIrm2
+.PHONY : PhaseInIrm2
+
+# fast build rule for target.
+PhaseInIrm2/fast:
+	$(MAKE) -f CMakeFiles/PhaseInIrm2.dir/build.make CMakeFiles/PhaseInIrm2.dir/build
+.PHONY : PhaseInIrm2/fast
+
 PhaseIn1.o: PhaseIn1.cpp.o
 .PHONY : PhaseIn1.o
 
@@ -172,6 +185,30 @@ PhaseInIrm.cpp.s:
 	$(MAKE) -f CMakeFiles/PhaseInIrm.dir/build.make CMakeFiles/PhaseInIrm.dir/PhaseInIrm.cpp.s
 .PHONY : PhaseInIrm.cpp.s
 
+PhaseInIrm2.o: PhaseInIrm2.cpp.o
+.PHONY : PhaseInIrm2.o
+
+# target to build an object file
+PhaseInIrm2.cpp.o:
+	$(MAKE) -f CMakeFiles/PhaseInIrm2.dir/build.make CMakeFiles/PhaseInIrm2.dir/PhaseInIrm2.cpp.o
+.PHONY : PhaseInIrm2.cpp.o
+
+PhaseInIrm2.i: PhaseInIrm2.cpp.i
+.PHONY : PhaseInIrm2.i
+
+# target to preprocess a source file
+PhaseInIrm2.cpp.i:
+	$(MAKE) -f CMakeFiles/PhaseInIrm2.dir/build.make CMakeFiles/PhaseInIrm2.dir/PhaseInIrm2.cpp.i
+.PHONY : PhaseInIrm2.cpp.i
+
+PhaseInIrm2.s: PhaseInIrm2.cpp.s
+.PHONY : PhaseInIrm2.s
+
+# target to generate assembly for a file
+PhaseInIrm2.cpp.s:
+	$(MAKE) -f CMakeFiles/PhaseInIrm2.dir/build.make CMakeFiles/PhaseInIrm2.dir/PhaseInIrm2.cpp.s
+.PHONY : PhaseInIrm2.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -180,6 +217,7 @@ help:
 	@echo "... depend"
 	@echo "... PhaseIn1"
 	@echo "... PhaseInIrm"
+	@echo "... PhaseInIrm2"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... PhaseIn1.o"
@@ -188,6 +226,9 @@ help:
 	@echo "... PhaseInIrm.o"
 	@echo "... PhaseInIrm.i"
 	@echo "... PhaseInIrm.s"
+	@echo "... PhaseInIrm2.o"
+	@echo "... PhaseInIrm2.i"
+	@echo "... PhaseInIrm2.s"
 .PHONY : help
 
 

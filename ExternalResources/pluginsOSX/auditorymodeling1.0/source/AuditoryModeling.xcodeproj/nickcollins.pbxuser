@@ -1,0 +1,337 @@
+// !$*UTF8*$!
+{
+	08FB7793FE84155DC02AAC07 /* Project object */ = {
+		activeBuildConfigurationName = Release;
+		activeTarget = D2AAC0620554660B00DB518D /* AuditoryModeling */;
+		addToTargets = (
+			D2AAC0620554660B00DB518D /* AuditoryModeling */,
+		);
+		breakpoints = (
+		);
+		codeSenseManager = 46C8360611C46EF00076CB84 /* Code sense */;
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXErrorsWarningsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXErrorsWarningsDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					492,
+					361,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXErrorsWarningsDataSource_TypeID,
+					PBXErrorsWarningsDataSource_MessageID,
+					PBXErrorsWarningsDataSource_LocationID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					663,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFindDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFindDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					200,
+					677,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFindDataSource_MessageID,
+					PBXFindDataSource_LocationID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					623,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 299893654;
+			PBXWorkspaceStateSaveDate = 299893654;
+		};
+		perUserProjectItems = {
+			4603F15F11DF968B00EDB19F = 4603F15F11DF968B00EDB19F /* PBXTextBookmark */;
+			4688E50811E00399004C7B9D /* PBXBookmark */ = 4688E50811E00399004C7B9D /* PBXBookmark */;
+			4688E50911E0039C004C7B9D /* PBXTextBookmark */ = 4688E50911E0039C004C7B9D /* PBXTextBookmark */;
+			4688E50E11E0039C004C7B9D /* PBXTextBookmark */ = 4688E50E11E0039C004C7B9D /* PBXTextBookmark */;
+			4688E50F11E00443004C7B9D /* PBXTextBookmark */ = 4688E50F11E00443004C7B9D /* PBXTextBookmark */;
+			4688E51011E00443004C7B9D /* PBXTextBookmark */ = 4688E51011E00443004C7B9D /* PBXTextBookmark */;
+			4688E51111E00548004C7B9D /* PBXTextBookmark */ = 4688E51111E00548004C7B9D /* PBXTextBookmark */;
+			4688E51211E00548004C7B9D /* PBXTextBookmark */ = 4688E51211E00548004C7B9D /* PBXTextBookmark */;
+			4688E51611E006F0004C7B9D /* PBXTextBookmark */ = 4688E51611E006F0004C7B9D /* PBXTextBookmark */;
+			4688E51711E006F0004C7B9D /* PBXTextBookmark */ = 4688E51711E006F0004C7B9D /* PBXTextBookmark */;
+			4688E51A11E00A2E004C7B9D /* PBXTextBookmark */ = 4688E51A11E00A2E004C7B9D /* PBXTextBookmark */;
+			4688E51B11E00A2E004C7B9D /* PBXTextBookmark */ = 4688E51B11E00A2E004C7B9D /* PBXTextBookmark */;
+			46D8D35611DA975E004B6854 = 46D8D35611DA975E004B6854 /* PBXTextBookmark */;
+			46D8D35911DA975E004B6854 = 46D8D35911DA975E004B6854 /* PBXTextBookmark */;
+			46D8D66511DF501B004B6854 = 46D8D66511DF501B004B6854 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 46C8360511C46EF00076CB84 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	4603F15F11DF968B00EDB19F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4603F16011DF968B00EDB19F /* VEPConv.cpp */;
+		name = "VEPConv.cpp: 3";
+		rLen = 4;
+		rLoc = 39;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	4603F16011DF968B00EDB19F /* VEPConv.cpp */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = VEPConv.cpp;
+		path = "/Users/nickcollins/Desktop/SCtotry/skUG-src-0.1.0a 2/src/VEP/VEPConv.cpp";
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {120, 9422}}";
+			sepNavSelRange = "{39, 4}";
+			sepNavVisRange = "{0, 0}";
+		};
+	};
+	4688E50811E00399004C7B9D /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 46D8D46411DBFE18004B6854 /* AuditoryModelingUGens.cpp */;
+	};
+	4688E50911E0039C004C7B9D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4603F16011DF968B00EDB19F /* VEPConv.cpp */;
+		name = "VEPConv.cpp: 3";
+		rLen = 4;
+		rLoc = 39;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	4688E50E11E0039C004C7B9D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 46D8D46411DBFE18004B6854 /* AuditoryModelingUGens.cpp */;
+		name = "AuditoryModelingUGens.cpp: 405";
+		rLen = 0;
+		rLoc = 10549;
+		rType = 0;
+		vrLen = 1369;
+		vrLoc = 7992;
+	};
+	4688E50F11E00443004C7B9D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4603F16011DF968B00EDB19F /* VEPConv.cpp */;
+		name = "VEPConv.cpp: 3";
+		rLen = 4;
+		rLoc = 39;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	4688E51011E00443004C7B9D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 46D8D46411DBFE18004B6854 /* AuditoryModelingUGens.cpp */;
+		name = "AuditoryModelingUGens.cpp: 247";
+		rLen = 0;
+		rLoc = 5610;
+		rType = 0;
+		vrLen = 819;
+		vrLoc = 5270;
+	};
+	4688E51111E00548004C7B9D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4603F16011DF968B00EDB19F /* VEPConv.cpp */;
+		name = "VEPConv.cpp: 3";
+		rLen = 4;
+		rLoc = 39;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	4688E51211E00548004C7B9D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 46D8D46411DBFE18004B6854 /* AuditoryModelingUGens.cpp */;
+		name = "AuditoryModelingUGens.cpp: 285";
+		rLen = 0;
+		rLoc = 6305;
+		rType = 0;
+		vrLen = 656;
+		vrLoc = 5346;
+	};
+	4688E51611E006F0004C7B9D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4603F16011DF968B00EDB19F /* VEPConv.cpp */;
+		name = "VEPConv.cpp: 3";
+		rLen = 4;
+		rLoc = 39;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	4688E51711E006F0004C7B9D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 46D8D46411DBFE18004B6854 /* AuditoryModelingUGens.cpp */;
+		name = "AuditoryModelingUGens.cpp: 273";
+		rLen = 0;
+		rLoc = 5951;
+		rType = 0;
+		vrLen = 848;
+		vrLoc = 5333;
+	};
+	4688E51A11E00A2E004C7B9D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4603F16011DF968B00EDB19F /* VEPConv.cpp */;
+		name = "VEPConv.cpp: 3";
+		rLen = 4;
+		rLoc = 39;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	4688E51B11E00A2E004C7B9D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 46D8D46411DBFE18004B6854 /* AuditoryModelingUGens.cpp */;
+		name = "AuditoryModelingUGens.cpp: 348";
+		rLen = 0;
+		rLoc = 7531;
+		rType = 0;
+		vrLen = 1094;
+		vrLoc = 137;
+	};
+	46C8360511C46EF00076CB84 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	46C8360611C46EF00076CB84 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	46C8367811C5C4AB0076CB84 /* sndfile.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {841, 8764}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 297}";
+		};
+	};
+	46D8D25511DA8C21004B6854 /* vecLibTypes.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = vecLibTypes.h;
+		path = /Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/vecLib.framework/Headers/vecLibTypes.h;
+		sourceTree = "<absolute>";
+	};
+	46D8D35611DA975E004B6854 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 46D8D25511DA8C21004B6854 /* vecLibTypes.h */;
+		name = "vecLibTypes.h: 68";
+		rLen = 0;
+		rLoc = 2386;
+		rType = 0;
+		vrLen = 268;
+		vrLoc = 2222;
+	};
+	46D8D35911DA975E004B6854 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 46D8D25511DA8C21004B6854 /* vecLibTypes.h */;
+		name = "vecLibTypes.h: 68";
+		rLen = 0;
+		rLoc = 2386;
+		rType = 0;
+		vrLen = 268;
+		vrLoc = 2222;
+	};
+	46D8D46411DBFE18004B6854 /* AuditoryModelingUGens.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1050, 6958}}";
+			sepNavSelRange = "{7531, 0}";
+			sepNavVisRange = "{137, 1094}";
+		};
+	};
+	46D8D46511DBFE18004B6854 /* MeddisHairCell.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1050, 1120}}";
+			sepNavSelRange = "{133, 0}";
+			sepNavVisRange = "{0, 1318}";
+			sepNavWindowFrame = "{{174, 49}, {1109, 771}}";
+		};
+	};
+	46D8D46611DBFE18004B6854 /* MeddisHairCell.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1050, 1246}}";
+			sepNavSelRange = "{133, 0}";
+			sepNavVisRange = "{0, 1208}";
+			sepNavWindowFrame = "{{356, 40}, {1109, 771}}";
+		};
+	};
+	46D8D46711DBFE18004B6854 /* SimpleHairCell.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1050, 1274}}";
+			sepNavSelRange = "{134, 0}";
+			sepNavVisRange = "{0, 1121}";
+			sepNavWindowFrame = "{{395, 56}, {1109, 771}}";
+		};
+	};
+	46D8D46811DBFE18004B6854 /* SimpleHairCell.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1068, 756}}";
+			sepNavSelRange = "{134, 0}";
+			sepNavVisRange = "{0, 1290}";
+			sepNavWindowFrame = "{{598, -58}, {1109, 771}}";
+		};
+	};
+	46D8D66511DF501B004B6854 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 46D8D66611DF501B004B6854 /* VEPConv.cpp */;
+		name = "VEPConv.cpp: 3";
+		rLen = 4;
+		rLoc = 39;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
+	};
+	46D8D66611DF501B004B6854 /* VEPConv.cpp */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = VEPConv.cpp;
+		path = "/Users/nickcollins/Desktop/SCtotry/skUG-src-0.1.0a 2/src/VEP/VEPConv.cpp";
+		sourceTree = "<absolute>";
+	};
+	D2AAC0620554660B00DB518D /* AuditoryModeling */ = {
+		activeExec = 0;
+	};
+}

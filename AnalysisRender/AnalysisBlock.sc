@@ -538,9 +538,13 @@ AFFTAnalysis : AAnalysis {
 			outputChannels: 1,
 			outputSpec: \freq //an instance of controlspec
 		) ).store;
+
+
 	}
 	
 }
+
+
 
 APitchAnalysis : AAnalysis {
 	
@@ -592,6 +596,28 @@ ALevelsAnalysis : AAnalysis {
 			outputChannels: 1,
 			outputSpec: \db //an instance of controlspec
 		) ).store;
+		
+		SynthDef(\dBAfast, { |inar0=0, outkr0=30|
+			var chain;
+			chain = In.ar(inar0,1);
+//			chain = SOS.ar(chain, 0.49735, 0, -0.49735, -1.041289, 0.109858);
+			chain = BPF.ar(chain, 5000, 0.7, 1);
+			chain = RunningSum.rms(chain, 0.125 * SampleRate.ir);
+			chain.poll;
+			Out.kr(outkr0, chain);
+		}, metadata: (
+			logType: \continuous, 
+			interp: \lin,
+			inputName: \inar0,
+			inputRate: \audio,
+			inputChannels: 1, 
+			outputName: \outkr0, 
+			outputRate: \control,
+			outputChannels: 1,
+			outputSpec: \dBA //an instance of controlspec
+		) ).store;
+
+		Spec.add(\dBA, [0.001, 1000, \lin, 0, nil]);
 	}	
 }
 

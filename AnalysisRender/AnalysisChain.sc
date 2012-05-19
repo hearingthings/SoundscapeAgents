@@ -425,5 +425,87 @@ AnalysisChain {
 
 }
 
++ Array {
+	
+	scoreCheck {
+		var badSize = false, hasNil = false;
+		this.do{ |scoreArr|
+			//size check
+			if (scoreArr.size < 2) {
+				badSize = true;
+			};
+
+			//make sure there are no nils
+			scoreArr.do{ |el| if (el.isNil) {hasNil = true} };
+			
+			scoreArr[1..].do{ |el|
+				if (el.class != Array) {
+					"possible non-array".warn;
+				};
+			};
+		};
+		if (badSize) {"Score has time with no bundle".throw};
+		if (hasNil) {"Score has a nil as a time or bundle".throw};
+
+		//do a size check	
+		
+		^this.scoreSizeCheck
+
+	}
+	
+	scoreSizeCheck { |limit = 8192|
+		var new, needNew=false;
+		
+		this.do{ |scoreArr|
+			var bundle = scoreArr[1..];
+			if (bundle.bundleSizeSafe > limit) {
+				needNew = true;	
+			};
+		};
+		
+		if (needNew) { //if we're over the size limit for one or more score entries
+			new = []; //allocate new array for new score
+			this.do{ |scoreArr|
+				var time, bundle;
+				bundle = scoreArr[1..];
+				time = scoreArr[0];
+				bundle.bundleSafeWithTime(time).do{ |scoreEntry|
+					new = new.add(scoreEntry);	
+				};
+			};
+			^new
+		};
+		//else we return self, as we did not need a new array
+		
+	}
+	
+	bundleSafeWithTime { |time| //for osc bundles
+		
+		if (this.bundleSizeSafe > 8192) {
+
+			^this.clumpBundles.collect{ |b| //clump the osc messages (not the time, so item[1..])
+				b.insert(0, time);
+			};
+		} {
+			^[this.insert(0, time)];	
+		}		
+	}
+		
+	bundleSizeSafe {
+		var r = 0;
+		
+		this.do{ |b, i|
+			r = r + b.msgSize;
+
+		};
+		
+		^r		
+		
+	}
+	
+}
+
+
+
 
 //AnalysisChain(nil, [ nil, [AFFTAnalysis, "ffttest", \fftSize, 1024, \rate, 100], nil ])

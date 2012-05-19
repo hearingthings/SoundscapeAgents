@@ -86,39 +86,41 @@ AnalysisView {
 			sfView, 
 			Rect(this.statsWidth, 0, this.dataWidth, sfView.bounds.height)
 		);
-		
-		buf = Buffer.read(Server.default, data.path);
-		synth = (instrument: \playbufLoop, bufnum: buf.bufnum);	
-		
-
 				
 		f = SoundFile.new;
 		f.openRead(data.path);
 		sf.soundfile = f;
 		sf.read(0, f.numFrames);
 		
-		sf.keyDownAction = { |char, mod, unicode, keycode|
-
-			[char, mod, unicode, keycode].postln;
-			if (keycode == 32) { //we have a spacebar
-				if (synth['isPlaying'] == true) {
-					synth.free;
-				} {
-					startPos = sf.selectionStart(0);
-					if (startPos.isNil) {startPos = 0};
-					duration = sf.selectionDuration(0);
-					if (duration.isNil) {duration = f.duration};
-					duration.debug("duration of playback");
-					synth.put(\startPos, startPos);
-					synth.put(\duration, duration);
-					synth.play;
-				};
-			};
-		};		
-		
+		sf.keyDownAction = this.soundFileViewKeyDown;	
 		//soundfile has time in and duration
 			//needs to be updated from drawzoom
 	}
+	
+	soundFileViewKeyDown { ^{ |char, mod, unicode, keycode|
+
+		
+//		buf = Buffer.read(Server.default, data.path);
+//		synth = (instrument: \playbufLoop, bufnum: buf.bufnum);
+//
+//		[char, mod, unicode, keycode].postln;
+//		if (keycode == 32) { //we have a spacebar
+//			if (synth['isPlaying'] == true) {
+//				synth.free;
+//			} {
+//				startPos = sf.selectionStart(0);
+//				if (startPos.isNil) {startPos = 0};
+//				duration = sf.selectionDuration(0);
+//				if (duration.isNil) {duration = f.duration};
+//				duration.debug("duration of playback");
+//				synth.put(\startPos, startPos);
+//				synth.put(\duration, duration);
+//				synth.play;
+//			};
+//		};
+	};//end of returned function
+	}
+	
 	drawFFT { |parent|
 		//make fft container
 		
